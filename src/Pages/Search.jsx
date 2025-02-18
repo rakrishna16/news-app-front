@@ -3,7 +3,7 @@ import React, { useEffect, useState, data } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 
 
-const Search = ({ searchResults,NewsapiKey }) => {
+const Search = ({ searchResults,NewsapiKey, searchTerm }) => {
     const [urlValue] = useSearchParams()
     const navigate = useNavigate();
     const [data, setData] = useState([]);

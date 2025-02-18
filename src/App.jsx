@@ -57,7 +57,7 @@ const App = () => {
           <Route path='forgot-password' element={<ForgotPassword />} />
           <Route path='*' element={<NotFound />} />
           <Route path='notificationpush' element={<NotificationPush />} />
-          <Route path='Search' element={<Search data={data} searchResults={searchResults} NewsapiKey={NewsapiKey} setSearchResults={setSearchResults} />} />
+          <Route path='Search' element={<Search data={data} searchResults={searchResults} NewsapiKey={NewsapiKey} setSearchResults={setSearchResults} searchTerm={searchTerm} />} />
           <Route path='profile' element={<Profile email={email} NewsapiKey={NewsapiKey} setEmail={setEmail} profileu={profileu} setProfileu={setProfileu} />} />
           <Route path='likedpage' element={<LikedPage NewsapiKey={NewsapiKey}/>} />
 
