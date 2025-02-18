@@ -32,8 +32,8 @@ const LikedList = ({ele,NewsapiKey}) => {
                 <h4 className="text-xl font-bold text-gray-800">{ele.title}</h4>
                 {/* <p className="text-gray-600 mt-2">{ele.title}</p> */}
                 <div className="mt-4">
-                  <Link to={ele.link} className='rounded-t-lg' target="_blank"
-                    rel="noreferrer">Read more</Link>
+                  <Link to={ele.link} className='rounded-t-lg text-l text-blue-500' target="_blank"
+                    rel="noreferrer">Read more...</Link>
                 </div>
               </div>
             </div>

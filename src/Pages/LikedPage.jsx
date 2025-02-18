@@ -11,11 +11,7 @@ const LikedPage = ({NewsapiKey}) => {
   const isAuthenticated = !!localStorage.getItem("token");
 
   useEffect(() => {
-    isAuthenticated
-      ?
       getLiked()
-      :
-      navigate("/login")
   }, []);
 
   const getLiked = async () => {

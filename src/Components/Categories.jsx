@@ -2,7 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 const Categories = ({profileu}) => {
-    console.log(profileu)
+    //console.log(profileu)
+
+    
     return (
         <div className="w-full mx-auto">
             <div className="hidden m-auto w-full sm:block">

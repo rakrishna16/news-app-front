@@ -9,21 +9,20 @@ import NewsDisp from '../Components/NewsDisp';
 const Home = ({ profileu, searchResults, NewsapiKey }) => {
     const navigate = useNavigate();
     const [totalnews, setTotalnews] = useState([])
-    const [data, setData] = useState([]);
+    const [datah, setDatah] = useState([]);
     const [heart, setHeart] = useState(<FaRegHeart />)
     const [newsid, setnewsid] = useState("new");
     //console.log(searchTerm)
 
     useEffect(() => {
-        fetchData();
+        fetchDatah();
     }, []);
 
-    const fetchData = async () => {
+    const fetchDatah = async () => {
         await axios
             .get(`https://newsdata.io/api/1/latest?apikey=${NewsapiKey}&q=science`)
-            .then((res) => setData(res.data.results))
+            .then((res) => setDatah(res.data.results))
             .catch((error) => console.log(error));
-        //console.log(data)
     };
 
     return (
@@ -31,7 +30,7 @@ const Home = ({ profileu, searchResults, NewsapiKey }) => {
             <Categories profileu={profileu} />
             {/* <ApiFetch/> */}
             <div className="flex flex-1 flex-row flex-wrap gap-6 my-16 justify-center">
-                {data.map((ele, index) => {
+                {datah.map((ele, index) => {
                     return (
                         <NewsDisp ele={ele} index={index} heart={heart} setHeart={setHeart} totalnews={totalnews} setTotalnews={setTotalnews} />
                     );
