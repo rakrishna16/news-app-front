@@ -22,7 +22,9 @@ const LikedList = ({ele,NewsapiKey}) => {
 
   return (
     <>
-      {data.map((ele, index) => {
+      {
+      data?
+      data.map((ele, index) => {
         //console.log(ele)
         return (
           <div key={index} className="mx-10 my-3">
@@ -40,7 +42,9 @@ const LikedList = ({ele,NewsapiKey}) => {
           </div>
         )
       })
-
+      :     
+        navigate("/*")
+      
       }
     </>
   )

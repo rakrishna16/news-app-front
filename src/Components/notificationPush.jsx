@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import { requestNotificationPermission } from '../firebase';
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
-
+// const express = require("express");
+// const { messaging } = require("./firebaseAdmin");
 const NotificationPush = () => {
     const [token, setToken] = useState(null);
     const [title, setTitle] = useState('');
@@ -26,7 +27,7 @@ const NotificationPush = () => {
     console.log(token)
     const sendNotification = async () => {
         if (token) {
-            await axios.post('https://hkxnews.netlify.app/api/auth/send-notification',
+            await axios.post('http://localhost:4000/api/auth/send-notification',
                 { title, body, token, });
             console.log('Notification sent');
         }

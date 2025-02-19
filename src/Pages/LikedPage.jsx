@@ -17,6 +17,7 @@ const LikedPage = ({NewsapiKey}) => {
   const getLiked = async () => {
     //    setHeart(<FaHeart />) 
     //    setHstatus(false)
+    if(isAuthenticated === true){
     try {
       const response = await api.get(`like/getliked`)
       setData(response.data.data);
@@ -28,21 +29,21 @@ const LikedPage = ({NewsapiKey}) => {
       //toast.error(error.response.data.message);
       console.log(error)
     }
-
-    console.log(data)
-
+  }else{ navigate("/login")}
+   
+  
   }
 
   return (
     <div>
-
-      {data.map((ele, index) => {
+      {
+      data.map((ele, index) => {
         return (
           <LikedList ele={ele} index={index} NewsapiKey={NewsapiKey} />
         )
 
       })
-      }
+    }
 
 
 

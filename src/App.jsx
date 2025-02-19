@@ -11,10 +11,10 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import NotificationPush from './Components/notificationPush';
 import Profile from './Pages/Profile';
-import { generateToken } from './firebase';
+// import { generateToken } from './firebase';
 import LikedPage from './Pages/LikedPage';
 import Search from './Pages/Search';
-
+import { requestForToken, onMessageListener } from "./firebase";
 
 
 const App = () => {
@@ -29,7 +29,16 @@ const App = () => {
   const NewsapiKey = import.meta.env.VITE_NEWS_API;
 
   useEffect(() => {
-    generateToken()
+    requestForToken().then((token) => {
+      if (token) {
+        console.log("Token Received:", token);
+        // Send this token to the backend to send push notifications
+      }
+    });
+    onMessageListener().then((payload) => {
+      console.log("Foreground Notification:", payload);
+      alert(`New Notification: ${payload.notification.title}`);
+    });
   }, [])
 
   //   const fetchProfile = async () => {

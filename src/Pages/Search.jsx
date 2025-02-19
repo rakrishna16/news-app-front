@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import api from '../Services/api';
 import SearchList from '../Components/SearchList';
+import Categories from '../Components/Categories';
 
 const Search = ({ searchResults,NewsapiKey, searchTerm }) => {
     const [urlValue] = useSearchParams()
@@ -14,9 +15,12 @@ const Search = ({ searchResults,NewsapiKey, searchTerm }) => {
      const [totalnews, setTotalnews] = useState([])
     const [likedn, setLikedn] = useState()
     const [data, setData] = useState([]);
+    //const [categories,setCategories] = useState("");
     const [hstatus, setHstatus] = useState(true);
     //const [likedn, setLikedn] = useState("");
     const ghi = urlValue.get("id");
+    const categories = urlValue.get("cat");
+    //setCategories(cat)
     const isAuthenticated = !!localStorage.getItem("token");
     //const [searchParams, setSearchParams] = useSearchParams();
     //const [searchQuery, setSearchQuery] = useState(searchParams.get("q") || "");
@@ -26,20 +30,29 @@ const Search = ({ searchResults,NewsapiKey, searchTerm }) => {
 
     useEffect(() => {
         fetchData();
-    }, [ghi]);
+    }, [ghi, categories]);
 
-
+console.log(categories)
     
     // const handleView = (id) => {
     //     setID(id)
     //     navigate(`/MovieDetails?id=${id}`)
     // }
-
+    
     const fetchData = async () => {
-        await axios
+        if(categories){
+            await axios
+            .get(`https://newsdata.io/api/1/news?apikey=${NewsapiKey}&category=${categories}`)
+            .then((res) => setData(res.data.results))
+            .catch((error) => console.log(error));
+        }
+        if(ghi){
+            await axios
             .get(`https://newsdata.io/api/1/news?apikey=${NewsapiKey}&q=${ghi}`)
             .then((res) => setData(res.data.results))
             .catch((error) => console.log(error));
+        }
+       
         
     };
     console.log(data)
@@ -51,7 +64,9 @@ const Search = ({ searchResults,NewsapiKey, searchTerm }) => {
     // };
     return (
         <div className="flex flex-1 flex-wrap gap-6 mx-12 my-20 justify-center">
+             <Categories />
             {
+
                 data ?
                     data.map((ele, index) => {
                             return (
