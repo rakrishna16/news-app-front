@@ -29,10 +29,9 @@ const App = () => {
   const [data, setData] = useState([]);
 
  //const newsapiKey = import.meta.env.VITE_NEWS_API;
- 
+ //setNewsapiKey("pub_64768fc0af985457096b71b484051a88e82bc");
  
   useEffect(() => {
-    setNewsapiKey(import.meta.env.VITE_NEWS_API);
     requestForToken().then((token) => {
       if (token) {
         console.log("Token Received:", token);
@@ -44,7 +43,7 @@ const App = () => {
       alert(`New Notification: ${payload.notification.title}`);
     });
   }, [])
-  console.log(newsapiKey)
+
   //   const fetchProfile = async () => {
   //     await axios
   //         .get(`https://newsdata.io/api/1/latest?apikey=${NewsapiKey}&q=${searchResults}`)

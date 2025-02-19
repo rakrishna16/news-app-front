@@ -13,7 +13,7 @@ const LikedList = ({ele,newsapiKey}) => {
 
   const fetchData = async () => {
     await axios
-      .get(`https://newsdata.io/api/1/latest?apikey=${newsapiKey}&id=${ele.articleid}`)
+      .get(`https://newsdata.io/api/1/latest?apikey=pub_64768fc0af985457096b71b484051a88e82bc&id=${ele.articleid}`)
       .then((res) => setData(res.data.results))
       .catch((error) => console.log(error));
 

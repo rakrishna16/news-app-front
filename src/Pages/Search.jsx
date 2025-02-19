@@ -39,13 +39,13 @@ const Search = ({ searchResults, newsapiKey, searchTerm }) => {
     const fetchData = async () => {
         if (categories) {
             await axios
-                .get(`https://newsdata.io/api/1/news?apikey=${newsapiKey}&category=${categories}`)
+                .get(`https://newsdata.io/api/1/news?apikey=pub_64768fc0af985457096b71b484051a88e82bc&category=${categories}`)
                 .then((res) => setData(res.data.results))
                 .catch((error) => console.log(error));
         }
         if (ghi) {
             await axios
-                .get(`https://newsdata.io/api/1/news?apikey=${newsapiKey}&q=${ghi}`)
+                .get(`https://newsdata.io/api/1/news?apikey=pub_64768fc0af985457096b71b484051a88e82bc&q=${ghi}`)
                 .then((res) => setData(res.data.results))
                 .catch((error) => console.log(error));
         }

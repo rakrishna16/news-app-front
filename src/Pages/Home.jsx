@@ -19,7 +19,7 @@ const Home = ({ profileu, searchResults, newsapiKey }) => {
 
     const fetchDatah = async () => {
         await axios
-            .get(`https://newsdata.io/api/1/latest?apikey=${newsapiKey}&q=science`)
+            .get(`https://newsdata.io/api/1/latest?apikey=pub_64768fc0af985457096b71b484051a88e82bc&q=science`)
             .then((res) => setDatah(res.data.results))
             .catch((error) => console.log(error));
     };
