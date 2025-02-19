@@ -76,15 +76,15 @@ const App = () => {
         </div>
         <Routes>
           <Route path='/' element={<Home profileu={profileu} setProfileu={setProfileu} newsapiKey={newsapiKey}/>} />
-          <Route path='login' element={<Login setToken={setToken} token={token} passkey={passkey} setPasskey={setPasskey} email={email} setEmail={setEmail} />} />
-          <Route path='register' element={<Register />} />
-          <Route path='reset-password' element={<ResetPassword />} />
-          <Route path='forgot-password' element={<ForgotPassword />} />
-          <Route path='*' element={<NotFound />} />
-          <Route path='notificationpush' element={<NotificationPush />} />
-          <Route path='Search' element={<Search data={data} searchResults={searchResults} newsapiKey={newsapiKey} setSearchResults={setSearchResults} searchTerm={searchTerm} />} />
-          <Route path='profile' element={<Profile/>} />
-          <Route path='likedpage' element={<LikedPage newsapiKey={newsapiKey}/>} />
+          <Route path='/login' element={<Login setToken={setToken} token={token} passkey={passkey} setPasskey={setPasskey} email={email} setEmail={setEmail} />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/reset-password' element={<ResetPassword />} />
+          <Route path='/forgot-password' element={<ForgotPassword />} />
+          <Route path='/*' element={<NotFound />} />
+          <Route path='/notificationpush' element={<NotificationPush />} />
+          <Route path='/Search' element={<Search data={data} searchResults={searchResults} newsapiKey={newsapiKey} setSearchResults={setSearchResults} searchTerm={searchTerm} />} />
+          <Route path='/profile' element={<Profile/>} />
+          <Route path='/likedpage' element={<LikedPage newsapiKey={newsapiKey}/>} />
 
         </Routes>
         <div>
