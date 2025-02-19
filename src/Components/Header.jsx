@@ -151,7 +151,7 @@ const Header = ({ NewsapiKey, profileu, setProfileu, searchTerm, setSearchTerm, 
                             <span className="sr-only">Open user menu</span>
                             <img className="size-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="user img" />
                           </button> */}
-                            <h2 onMouseOver={openProf} className="rounded-full p-1 mx-5 capitalize my-3 text-lg font-extrabold text-center w-10 h-10 bg-white border-4 border-indigo-800 dark:border-blue-900 transition-transform duration-300 hover:scale-105" >{profileu.name ? profileu.name.charAt(0) : ''}</h2>
+                            <h2 onMouseOver={openProf} className="rounded-full p-1 mx-5 capitalize my-3 text-lg font-extrabold text-center w-10 h-10 bg-white border-4 border-indigo-800 dark:border-blue-900 transition-transform duration-300 hover:scale-105" >{profileu[0].name ? profileu[0].name.charAt(0) : ''}</h2>
                           </>
                           :
                           <>
@@ -160,7 +160,7 @@ const Header = ({ NewsapiKey, profileu, setProfileu, searchTerm, setSearchTerm, 
                             <span className="sr-only">Open user menu</span>
                             <img className="size-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="user img" />
                           </button> */}
-                            <h2 onMouseOver={closeProf} className="rounded-full p-1 mx-5 capitalize my-3 text-lg font-extrabold text-center w-10 h-10 bg-white border-4 border-indigo-800 dark:border-blue-900 transition-transform duration-300 hover:scale-105" >{profileu.name ? profileu.name.charAt(0) : ''}</h2>
+                            <h2 onMouseOver={closeProf} className="rounded-full p-1 mx-5 capitalize my-3 text-lg font-extrabold text-center w-10 h-10 bg-white border-4 border-indigo-800 dark:border-blue-900 transition-transform duration-300 hover:scale-105" >{profileu[0].name ? profileu[0].name.charAt(0) : ''}</h2>
                           </>
                         }
                       </>

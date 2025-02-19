@@ -14,6 +14,7 @@ import Profile from './Pages/Profile';
 // import { generateToken } from './firebase';
 import LikedPage from './Pages/LikedPage';
 import Search from './Pages/Search';
+import api from "./Services/api";
 import { requestForToken, onMessageListener } from "./firebase";
 
 
@@ -23,11 +24,12 @@ const App = () => {
   const [passkey, setPasskey] = useState('');
   const [profile, setProfile] = useState([]);
   const [email, setEmail] = useState("");
-  const [profileu, setProfileu] = useState([]);
+  const [profileu, setProfileu] = useState("");
   const [searchResults, setSearchResults] = useState('science');
   const [searchTerm, setSearchTerm] = useState('');
   const [data, setData] = useState([]);
-
+  const isAuthenticated = !!localStorage.getItem("token");
+  const tokenn = String(localStorage.getItem("token"));
  //const newsapiKey = import.meta.env.VITE_NEWS_API;
  //setNewsapiKey("pub_64768fc0af985457096b71b484051a88e82bc");
  
@@ -42,7 +44,18 @@ const App = () => {
       console.log("Foreground Notification:", payload);
       alert(`New Notification: ${payload.notification.title}`);
     });
-  }, [])
+    fetchProfile();
+  }, [isAuthenticated])
+
+  const fetchProfile = async () => { 
+    try {
+      const response = await api.get(`auth/getuser/${tokenn}`);
+      setProfileu(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   //   const fetchProfile = async () => {
   //     await axios
@@ -70,7 +83,7 @@ const App = () => {
           <Route path='*' element={<NotFound />} />
           <Route path='notificationpush' element={<NotificationPush />} />
           <Route path='Search' element={<Search data={data} searchResults={searchResults} newsapiKey={newsapiKey} setSearchResults={setSearchResults} searchTerm={searchTerm} />} />
-          <Route path='profile' element={<Profile email={email} newsapiKey={newsapiKey} setEmail={setEmail} profileu={profileu} setProfileu={setProfileu} />} />
+          <Route path='profile' element={<Profile/>} />
           <Route path='likedpage' element={<LikedPage newsapiKey={newsapiKey}/>} />
 
         </Routes>
