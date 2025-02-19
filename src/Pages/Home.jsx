@@ -13,7 +13,7 @@ const Home = ({ profileu, searchResults, NewsapiKey }) => {
     const [heart, setHeart] = useState(<FaRegHeart />)
     const [newsid, setnewsid] = useState("new");
     //console.log(searchTerm)
-
+console.log(NewsapiKey)
     useEffect(() => {
         fetchDatah();
     }, []);
