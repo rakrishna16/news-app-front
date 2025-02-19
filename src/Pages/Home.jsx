@@ -6,21 +6,20 @@ import { FaRegHeart } from "react-icons/fa6";
 import NewsDisp from '../Components/NewsDisp';
 
 
-const Home = ({ profileu, searchResults, NewsapiKey }) => {
+const Home = ({ profileu, searchResults, newsapiKey }) => {
     const navigate = useNavigate();
     const [totalnews, setTotalnews] = useState([])
     const [datah, setDatah] = useState([]);
     const [heart, setHeart] = useState(<FaRegHeart />)
     const [newsid, setnewsid] = useState("new");
-    //console.log(searchTerm)
-console.log(NewsapiKey)
+
     useEffect(() => {
         fetchDatah();
     }, []);
 
     const fetchDatah = async () => {
         await axios
-            .get(`https://newsdata.io/api/1/latest?apikey=${NewsapiKey}&q=science`)
+            .get(`https://newsdata.io/api/1/latest?apikey=${newsapiKey}&q=science`)
             .then((res) => setDatah(res.data.results))
             .catch((error) => console.log(error));
     };

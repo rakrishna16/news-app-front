@@ -19,6 +19,7 @@ import { requestForToken, onMessageListener } from "./firebase";
 
 const App = () => {
   const [token, setToken] = useState('');
+  const [newsapiKey,setNewsapiKey] = useState('');
   const [passkey, setPasskey] = useState('');
   const [profile, setProfile] = useState([]);
   const [email, setEmail] = useState("");
@@ -26,9 +27,12 @@ const App = () => {
   const [searchResults, setSearchResults] = useState('science');
   const [searchTerm, setSearchTerm] = useState('');
   const [data, setData] = useState([]);
-  const NewsapiKey = import.meta.env.VITE_NEWS_API;
 
+ //const newsapiKey = import.meta.env.VITE_NEWS_API;
+ 
+ 
   useEffect(() => {
+    setNewsapiKey(import.meta.env.VITE_NEWS_API);
     requestForToken().then((token) => {
       if (token) {
         console.log("Token Received:", token);
@@ -40,7 +44,7 @@ const App = () => {
       alert(`New Notification: ${payload.notification.title}`);
     });
   }, [])
-
+  console.log(newsapiKey)
   //   const fetchProfile = async () => {
   //     await axios
   //         .get(`https://newsdata.io/api/1/latest?apikey=${NewsapiKey}&q=${searchResults}`)
@@ -56,19 +60,19 @@ const App = () => {
       </div>
       <BrowserRouter>
         <div>
-          <Header NewsapiKey={NewsapiKey} profileu={profileu} setProfileu={setProfileu} searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchResults={searchResults} setSearchResults={setSearchResults} />
+          <Header newsapiKey={newsapiKey} profileu={profileu} setProfileu={setProfileu} searchTerm={searchTerm} setSearchTerm={setSearchTerm} searchResults={searchResults} setSearchResults={setSearchResults} />
         </div>
         <Routes>
-          <Route path='/' element={<Home profileu={profileu} setProfileu={setProfileu} NewsapiKey={NewsapiKey}/>} />
+          <Route path='/' element={<Home profileu={profileu} setProfileu={setProfileu} newsapiKey={newsapiKey}/>} />
           <Route path='login' element={<Login setToken={setToken} token={token} passkey={passkey} setPasskey={setPasskey} email={email} setEmail={setEmail} />} />
           <Route path='register' element={<Register />} />
           <Route path='reset-password' element={<ResetPassword />} />
           <Route path='forgot-password' element={<ForgotPassword />} />
           <Route path='*' element={<NotFound />} />
           <Route path='notificationpush' element={<NotificationPush />} />
-          <Route path='Search' element={<Search data={data} searchResults={searchResults} NewsapiKey={NewsapiKey} setSearchResults={setSearchResults} searchTerm={searchTerm} />} />
-          <Route path='profile' element={<Profile email={email} NewsapiKey={NewsapiKey} setEmail={setEmail} profileu={profileu} setProfileu={setProfileu} />} />
-          <Route path='likedpage' element={<LikedPage NewsapiKey={NewsapiKey}/>} />
+          <Route path='Search' element={<Search data={data} searchResults={searchResults} newsapiKey={newsapiKey} setSearchResults={setSearchResults} searchTerm={searchTerm} />} />
+          <Route path='profile' element={<Profile email={email} newsapiKey={newsapiKey} setEmail={setEmail} profileu={profileu} setProfileu={setProfileu} />} />
+          <Route path='likedpage' element={<LikedPage newsapiKey={newsapiKey}/>} />
 
         </Routes>
         <div>

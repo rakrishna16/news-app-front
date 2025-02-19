@@ -4,7 +4,7 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa6';
 import api from '../Services/api';
 import { useNavigate } from 'react-router-dom';
 
-const LikedPage = ({NewsapiKey}) => {
+const LikedPage = ({newsapiKey}) => {
 
   const navigate = useNavigate()
   const [data, setData] = useState([])
@@ -39,7 +39,7 @@ const LikedPage = ({NewsapiKey}) => {
       {
       data.map((ele, index) => {
         return (
-          <LikedList ele={ele} index={index} NewsapiKey={NewsapiKey} />
+          <LikedList ele={ele} index={index} newsapiKey={newsapiKey} />
         )
 
       })

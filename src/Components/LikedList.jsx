@@ -3,7 +3,7 @@ import api from '../Services/api';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const LikedList = ({ele,NewsapiKey}) => {
+const LikedList = ({ele,newsapiKey}) => {
   const [data, setData] = useState([])
   //console.log(ele)
 
@@ -13,7 +13,7 @@ const LikedList = ({ele,NewsapiKey}) => {
 
   const fetchData = async () => {
     await axios
-      .get(`https://newsdata.io/api/1/latest?apikey=${NewsapiKey}&id=${ele.articleid}`)
+      .get(`https://newsdata.io/api/1/latest?apikey=${newsapiKey}&id=${ele.articleid}`)
       .then((res) => setData(res.data.results))
       .catch((error) => console.log(error));
 

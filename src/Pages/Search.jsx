@@ -8,11 +8,11 @@ import api from '../Services/api';
 import SearchList from '../Components/SearchList';
 import Categories from '../Components/Categories';
 
-const Search = ({ searchResults,NewsapiKey, searchTerm }) => {
+const Search = ({ searchResults, newsapiKey, searchTerm }) => {
     const [urlValue] = useSearchParams()
     const navigate = useNavigate();
     const [heart, setHeart] = useState(<FaRegHeart />)
-     const [totalnews, setTotalnews] = useState([])
+    const [totalnews, setTotalnews] = useState([])
     const [likedn, setLikedn] = useState()
     const [data, setData] = useState([]);
     //const [categories,setCategories] = useState("");
@@ -25,54 +25,45 @@ const Search = ({ searchResults,NewsapiKey, searchTerm }) => {
     //const [searchParams, setSearchParams] = useSearchParams();
     //const [searchQuery, setSearchQuery] = useState(searchParams.get("q") || "");
 
-
     //console.log(searchQuery)
 
     useEffect(() => {
         fetchData();
     }, [ghi, categories]);
 
-console.log(categories)
-    
     // const handleView = (id) => {
     //     setID(id)
     //     navigate(`/MovieDetails?id=${id}`)
     // }
-    
+
     const fetchData = async () => {
-        if(categories){
+        if (categories) {
             await axios
-            .get(`https://newsdata.io/api/1/news?apikey=${NewsapiKey}&category=${categories}`)
-            .then((res) => setData(res.data.results))
-            .catch((error) => console.log(error));
+                .get(`https://newsdata.io/api/1/news?apikey=${newsapiKey}&category=${categories}`)
+                .then((res) => setData(res.data.results))
+                .catch((error) => console.log(error));
         }
-        if(ghi){
+        if (ghi) {
             await axios
-            .get(`https://newsdata.io/api/1/news?apikey=${NewsapiKey}&q=${ghi}`)
-            .then((res) => setData(res.data.results))
-            .catch((error) => console.log(error));
+                .get(`https://newsdata.io/api/1/news?apikey=${newsapiKey}&q=${ghi}`)
+                .then((res) => setData(res.data.results))
+                .catch((error) => console.log(error));
         }
-       
-        
+
+
     };
-    console.log(data)
-    // const fetchTotal = async () => {
-    //     await axios
-    //         .get(`https://www.omdbapi.com/?s=${ghi}&page=${Page}&apikey=87ab1610`)
-    //         .then((res) => setTData(res.data.totalResults))
-    //         .catch((error) => console.log(error));
-    // };
+
     return (
         <div className="flex flex-1 flex-wrap gap-6 mx-12 my-20 justify-center">
-             <Categories />
+            <Categories />
             {
 
                 data ?
                     data.map((ele, index) => {
-                            return (
-                                <SearchList ele={ele} index={index} heart={heart} setHeart={setHeart} totalnews={totalnews} setTotalnews={setTotalnews}/>
-                            );
-                        
+                        return (
+                            <SearchList ele={ele} index={index} heart={heart} setHeart={setHeart} totalnews={totalnews} setTotalnews={setTotalnews} />
+                        );
+
 
                     }) : navigate("/*")
 
