@@ -55,7 +55,7 @@ const Register = () => {
     e.preventDefault();
     const payload = { name, email, phone, categories, frequency, notificationchannels, password };
     await axios
-      .post("http://localhost:4000/api/auth/register", payload)
+      .post("https://news-app-back.onrender.com/api/auth/register", payload)
       .then((res) => {
         toast.success(res.data.message);
         navigate("/login");

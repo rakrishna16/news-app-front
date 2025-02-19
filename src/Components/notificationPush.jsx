@@ -27,7 +27,7 @@ const NotificationPush = () => {
     console.log(token)
     const sendNotification = async () => {
         if (token) {
-            await axios.post('http://localhost:4000/api/auth/send-notification',
+            await axios.post('https://news-app-back.onrender.com/api/auth/send-notification',
                 { title, body, token, });
             console.log('Notification sent');
         }
