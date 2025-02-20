@@ -11,6 +11,7 @@ const [hstatus, setHstatus] = useState(true);
     const [error, setError] = useState(null);
     const isAuthenticated = !!localStorage.getItem("token");
 
+    const navigate = useNavigate();
     const addHeart = async (adH) => {
 
         if (isAuthenticated === true) {
