@@ -24,6 +24,7 @@ const Login = ({ setToken, passkey, setPasskey, email, setEmail }) => {
             toast.success(response.data.message);
             setError(null);
             navigate(`/`);
+            window.location.reload();
         } catch (error) {
             setError(error.response.data.message);
             toast.error(error.response.data.message);

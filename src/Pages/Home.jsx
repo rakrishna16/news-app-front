@@ -23,21 +23,21 @@ const Home = ({ profileu, searchResults, newsapiKey }) => {
     //     profileu.map((ele, index) => {
     //         setNewscat(...newscat,ele.categories.join(','))
     //     })
-        
+
     // }
-    
-// newscat.join(', ');
-    const fetchDatah = async () => { 
-        if(isAuthenticated){
-        await axios
-            .get(`https://newsdata.io/api/1/latest?apikey=pub_64768fc0af985457096b71b484051a88e82bc&q=science&category=technology`)
-            .then((res) => setDatah(res.data.results))
-            .catch((error) => console.log(error));
-        }else{
+
+    // newscat.join(', ');
+    const fetchDatah = async () => {
+        if (isAuthenticated) {
             await axios
-            .get(`https://newsdata.io/api/1/latest?apikey=pub_64768fc0af985457096b71b484051a88e82bc&q=science`)
-            .then((res) => setDatah(res.data.results))
-            .catch((error) => console.log(error));
+                .get(`https://newsdata.io/api/1/latest?apikey=pub_64768fc0af985457096b71b484051a88e82bc&q=science&category=technology`)
+                .then((res) => setDatah(res.data.results))
+                .catch((error) => console.log(error));
+        } else {
+            await axios
+                .get(`https://newsdata.io/api/1/latest?apikey=pub_64768fc0af985457096b71b484051a88e82bc&q=science`)
+                .then((res) => setDatah(res.data.results))
+                .catch((error) => console.log(error));
         }
     };
 
