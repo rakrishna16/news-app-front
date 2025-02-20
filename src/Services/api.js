@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-    // baseURL: "https://news-app-back.onrender.com",
-    baseURL: "http://localhost:4000/api/",
+    baseURL: "https://news-app-back.onrender.com/api/",
+    // baseURL: "http://localhost:4000/api/",
   });
   
   api.interceptors.request.use(
