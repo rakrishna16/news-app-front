@@ -47,6 +47,8 @@ const App = () => {
     fetchProfile();
   }, [])
 
+
+  
   const fetchProfile = async () => { 
     try {
       const response = await api.get(`auth/getuser/${tokenn}`);
@@ -55,7 +57,7 @@ const App = () => {
       console.log(error);
     }
   }
-
+  
 
   //   const fetchProfile = async () => {
   //     await axios

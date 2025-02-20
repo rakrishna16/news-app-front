@@ -17,7 +17,7 @@ const Register = () => {
   const [notificationchannels, setNotication] = useState([]);
   const navigate = useNavigate();
 
-  const options = ["All", "politics", "education", "sports", "entertainment", "top", "science", "technology",
+  const options = ["politics", "education", "sports", "entertainment", "top", "science", "technology",
     "others"
   ]
   const frequencyOptions = ["5mins", "1hr", "24hr"];
@@ -123,7 +123,7 @@ const Register = () => {
                   </div>
                 ))}
                 <div>
-                  <strong className='text-sm'>Selected Options: </strong>{categories.join(', ')}
+                  <strong className='text-xs'>Selected Options: </strong>{categories.join(', ')}
                 </div>
               </div>
             </div>
@@ -146,7 +146,7 @@ const Register = () => {
                 ))}
                 <div>
                 </div>
-                <strong className='text-sm'>Selected Notification TimeInterval: </strong>{frequency.join(', ')}
+                <strong className='text-xs'>Selected Notification Time Interval: </strong>{frequency.join(', ')}
               </div>
             </div>
             <div>
@@ -167,7 +167,7 @@ const Register = () => {
                   </div>
                 ))}
                 <div>
-                  <strong className='text-sm'>Selected Notification channel: </strong>{notificationchannels.join(', ')}
+                  <strong className='text-xs'>Selected Notification Channel: </strong>{notificationchannels.join(', ')}
                 </div>
               </div>
             </div>

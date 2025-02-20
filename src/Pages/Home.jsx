@@ -11,17 +11,34 @@ const Home = ({ profileu, searchResults, newsapiKey }) => {
     const [totalnews, setTotalnews] = useState([])
     const [datah, setDatah] = useState([]);
     const [heart, setHeart] = useState(<FaRegHeart />)
-    const [newsid, setnewsid] = useState("new");
+    const [newscat, setNewscat] = useState([]);
+    // const [newscati, setNewscati] = useState("");
+    const isAuthenticated = !!localStorage.getItem("token");
 
     useEffect(() => {
         fetchDatah();
     }, []);
 
-    const fetchDatah = async () => {
+    // if(profileu.length >=1){
+    //     profileu.map((ele, index) => {
+    //         setNewscat(...newscat,ele.categories.join(','))
+    //     })
+        
+    // }
+    
+// newscat.join(', ');
+    const fetchDatah = async () => { 
+        if(isAuthenticated){
         await axios
+            .get(`https://newsdata.io/api/1/latest?apikey=pub_64768fc0af985457096b71b484051a88e82bc&q=science&category=technology`)
+            .then((res) => setDatah(res.data.results))
+            .catch((error) => console.log(error));
+        }else{
+            await axios
             .get(`https://newsdata.io/api/1/latest?apikey=pub_64768fc0af985457096b71b484051a88e82bc&q=science`)
             .then((res) => setDatah(res.data.results))
             .catch((error) => console.log(error));
+        }
     };
 
     return (
