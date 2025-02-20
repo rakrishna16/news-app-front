@@ -26,10 +26,9 @@ const Header = ({ NewsapiKey, profileu, setProfileu, searchTerm, setSearchTerm, 
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("userid");
+    navigate(`/login`);
     setShide("true");
     setSshow("hidden");
-    navigate("/login");
   }
 
   const handleMenu = () => {

@@ -13,39 +13,47 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [categories, setCategory] = useState([]);
-  const [frequency, setFrequency] = useState("");
-  const [notificationchannels, setNotication] = useState("");
-
+  const [frequency, setFrequency] = useState([]);
+  const [notificationchannels, setNotication] = useState([]);
   const navigate = useNavigate();
 
-  const catOptions = [
-    { opt: "All" },
-    { opt: "politics" },
-    { opt: "education" },
-    { opt: "sports" },
-    { opt: "entertainment" },
-    { opt: "top" },
-    { opt: "science" },
-    { opt: "technology" },
-    { opt: "others" }
+  const options = ["All", "politics", "education", "sports", "entertainment", "top", "science", "technology",
+    "others"
   ]
-  const frequencyOptions = [
-    { opt: "5mins" },
-    { opt: "1hr" },
-    { opt: "24hr" }
-  ];
+  const frequencyOptions = ["5mins", "1hr", "24hr"];
+  const noticationOptions = ["email", "Push Notification"]
 
-  const noticationOptions = [
-    { opt: "email" },
-    { opt: "Push Notification" }
-  ]
+  const handleCheckboxChange = (event) => {
+    const { value, checked } = event.target;
+    if (checked) {
+      setCategory([...categories, value]);
+    } else {
+      setCategory(categories.filter(option => option !== value));
+    }
+  };
 
+  const handleFrequencyOptions = (event) => {
+    const { value, checked } = event.target;
+    if (checked) {
+      setFrequency([...frequency, value]);
+    } else {
+      setFrequency(frequency.filter(option => option !== value));
+    }
+  };
+
+  const handleNotication = (event) => {
+    const { value, checked } = event.target;
+    if (checked) {
+      setNotication([...notificationchannels, value]);
+    } else {
+      setNotication(notificationchannels.filter(option => option !== value));
+    }
+  };
 
   //catOptions.find((element) => element.opt === categories.map((opnn, index) => {opnn }));
 
   //console.log(found)
 
-  console.log(categories)
   // const handleChange = value => {
   //   console.log("value:", value);
   //   setAnimal(value);
@@ -98,47 +106,69 @@ const Register = () => {
               </div>
             </div>
             <div>
-              <label htmlFor="categories" className="block text-sm/6 font-medium text-gray-900">Select all Categories</label>
+              <label htmlFor="categories" className="block text-sm/6 font-bold text-gray-900">Select Categories</label>
               <div className="mt-2">
-                <select onChange={(e) => setCategory([...categories, e.target.value])} className='block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-teal-500 sm:text-sm/6' multiple={true} defaultValue={['All']}>
-                  {
 
-
-                    catOptions.map((opn, index) => {
-                      //categories.filter((item) => item === opn.opt)
-
-                      return (
-
-                        <option key={index} value={opn.opt}>{opn.opt}</option>
-
-                      )
-                    })}
-
-                </select>
+                {options.map(option => (
+                  <div key={option}>
+                    <label>
+                      <input
+                        type="checkbox"
+                        value={option}
+                        checked={categories.includes(option)}
+                        onChange={handleCheckboxChange}
+                      />
+                      {option}
+                    </label>
+                  </div>
+                ))}
+                <div>
+                  <strong className='text-sm'>Selected Options: </strong>{categories.join(', ')}
+                </div>
               </div>
             </div>
             <div>
-              <label htmlFor="Frequency" className="block text-sm/6 font-medium text-gray-900">Select Notification Timing</label>
+              <label htmlFor="Frequency" className="block text-sm/6 font-bold text-gray-900">Select Notification Timing</label>
               <div className="mt-2">
-                <select onChange={(e) => setFrequency(e.target.value)} className='block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-teal-500 sm:text-sm/6'>
-                  {frequencyOptions.map((opn, index) => {
-                    return (
-                      <option key={index} value={opn.opt}>Every {opn.opt}</option>
-                    )
-                  })}
-                </select>
+
+                {frequencyOptions.map(option => (
+                  <div key={option}>
+                    <label>
+                      <input
+                        type="checkbox"
+                        value={option}
+                        checked={frequency.includes(option)}
+                        onChange={handleFrequencyOptions}
+                      />
+                      {option}
+                    </label>
+                  </div>
+                ))}
+                <div>
+                </div>
+                <strong className='text-sm'>Selected Notification TimeInterval: </strong>{frequency.join(', ')}
               </div>
             </div>
             <div>
-              <label htmlFor="Notifications" className="block text-sm/6 font-medium text-gray-900">Select Notification Module</label>
+              <label htmlFor="Notifications" className="block font-bold text-sm/6 text-gray-900">Select Notification Module</label>
               <div className="mt-2">
-                <select onChange={(e) => setNotication(e.target.value)} className='block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-teal-500 sm:text-sm/6'>
-                  {noticationOptions.map((opn, index) => {
-                    return (
-                      <option key={index} value={opn.opt}>{opn.opt}</option>
-                    )
-                  })}
-                </select>
+
+                {noticationOptions.map(option => (
+                  <div key={option}>
+                    <label>
+                      <input
+                        type="checkbox"
+                        value={option}
+                        checked={notificationchannels.includes(option)}
+                        onChange={handleNotication}
+                      />
+                      {option}
+                    </label>
+                  </div>
+                ))}
+                <div>
+                  <strong className='text-sm'>Selected Notification channel: </strong>{notificationchannels.join(', ')}
+                </div>
               </div>
             </div>
             <div>

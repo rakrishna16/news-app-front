@@ -21,10 +21,9 @@ const Login = ({ setToken, passkey, setPasskey, email, setEmail }) => {
         try {
             const response = await api.post("/auth/login", { email, password })
             localStorage.setItem('token', response.data.token);
-            localStorage.setItem('email', email);
             toast.success(response.data.message);
             setError(null);
-            navigate("/");
+            navigate(`/`);
         } catch (error) {
             setError(error.response.data.message);
             toast.error(error.response.data.message);

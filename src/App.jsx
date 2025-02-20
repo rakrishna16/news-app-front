@@ -45,7 +45,7 @@ const App = () => {
       alert(`New Notification: ${payload.notification.title}`);
     });
     fetchProfile();
-  }, [isAuthenticated])
+  }, [])
 
   const fetchProfile = async () => { 
     try {

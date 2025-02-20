@@ -25,7 +25,7 @@ const LikedList = ({ele,newsapiKey}) => {
       {
       data?
       data.map((ele, index) => {
-        //console.log(ele)
+        console.log(ele.length)
         return (
           <div key={index} className="mx-10 my-3">
             <div key={index} className="flex max-w-xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">

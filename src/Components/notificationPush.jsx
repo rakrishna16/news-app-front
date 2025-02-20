@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import { requestNotificationPermission } from '../firebase';
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
-// const express = require("express");
-// const { messaging } = require("./firebaseAdmin");
+
 const NotificationPush = () => {
     const [token, setToken] = useState(null);
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
+    const isAuthenticated = !!localStorage.getItem("token");
 
     useEffect(() => {
         getTokenAsync();
-    }, []);
+        sendNotification();
+    }, [isAuthenticated]);
 
     const getTokenAsync = async () => {
         try {
